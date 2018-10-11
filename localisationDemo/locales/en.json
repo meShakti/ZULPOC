@@ -1,0 +1,7 @@
+{
+  "home": {
+    "welcome": "Welcome {{name}}",
+    "date":"date"
+  },
+  
+}
