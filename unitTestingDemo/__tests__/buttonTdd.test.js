@@ -3,17 +3,24 @@ import React from 'react';
 export default () => null
 
 import Button from '../components/Button';
+import { configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import {shallow} from 'enzyme';
 
-
-const wrapper = shallow(<Button />);
+configure({ adapter: new Adapter() });
 describe('rendering',()=>{
-    it('should render a <TouchableOpacity/>')
-    it('show render a label')
-}
+    let wrapper;
+    beforeEach(()=>{
+        wrapper = shallow(<Button label="Submit" />)
+    })
+    it('should render a <TouchableOpacity/>', ()=>{
+        expect(wrapper.find('TouchableOpacity')).toHaveLength(1);
+    })
+    it('show render a label',()=>{
+        expect(wrapper.find('Text').contains('Submit')).toBe(true);
+    })
+ }
 )
 
-describe('interaction',()=>{
-     describe('clicking the button',()=>{
-         it('should call the onClick callback')
-     })
-})
+
+
